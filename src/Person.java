@@ -18,7 +18,4 @@ public class Person {
         return surname;
     }
 
-    public Gender getGender() {
-        return gender;
-    }
 }

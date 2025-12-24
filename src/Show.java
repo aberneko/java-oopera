@@ -2,32 +2,16 @@ import java.util.ArrayList;
 
 public class Show {
 
-    private String title; // название шоу
-    private int duration; // длительность в минутах
-    private Director director; // режиссёр
-    private ArrayList<Actor> listOfActors; // список актеров
+    private String title;
+    private int duration;
+    private Director director;
+    private ArrayList<Actor> listOfActors;
 
     public Show(String title, int duration, Director director, ArrayList<Actor> listOfActors) {
         this.title = title;
         this.duration = duration;
         this.director = director;
         this.listOfActors = listOfActors;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public Director getDirector() {
-        return director;
-    }
-
-    public ArrayList<Actor> getListOfActors() {
-        return listOfActors;
     }
 
     public void printActorsList() {
@@ -37,7 +21,7 @@ public class Show {
     }
 
     public void addActor(Actor newActor) {
-        if(listOfActors.equals(newActor)) {
+        if(listOfActors.contains(newActor)) {
             System.out.println("Актёр " + newActor.getName() + " " + newActor.getSurname() + " уже имеется!");
         } else {
             listOfActors.add(newActor);
@@ -46,9 +30,16 @@ public class Show {
     }
 
     public void actorReplacement(Actor newActor, String surname) {
-        if(listOfActors.equals(surname)) {
-            System.out.println("Не тот спектаколь");
+        for(int i = 0; i < listOfActors.size(); i++) {
+            if(listOfActors.get(i).getSurname().equals(surname)) {
+                Actor oldActor = listOfActors.set(i, newActor);
+                System.out.println("По техническим обстоятельствам: " + oldActor.getSurname() + " не сможет выступать, " +
+                        "поэтому его заменит " + newActor.getSurname());
+                return;
+            }
         }
+
+        System.out.println("Актер с фамилией " + surname + " не найден в этом спектакле!");
     }
 
 }

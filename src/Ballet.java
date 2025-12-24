@@ -12,6 +12,6 @@ public class Ballet extends MusicalShow{
 
     @Override
     public String getLibrettoText() {
-        return super.getLibrettoText() + " Хореограф: " + choreographer;
+        return super.getLibrettoText();
     }
 }
