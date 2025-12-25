@@ -30,7 +30,7 @@ public class Actor extends Person{
 
     @Override
     public String toString() {
-        return getName() + " " + getSurname() + " (" + height + ")";
+        return String.format("%s %s (%d)", getName(), getSurname(), height);
     }
 
 

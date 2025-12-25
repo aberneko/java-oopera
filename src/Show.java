@@ -5,7 +5,7 @@ public class Show {
     private String title;
     private int duration;
     private Director director;
-    private ArrayList<Actor> listOfActors;
+    private final ArrayList<Actor> listOfActors;
 
     public Show(String title, int duration, Director director, ArrayList<Actor> listOfActors) {
         this.title = title;
@@ -22,10 +22,10 @@ public class Show {
 
     public void addActor(Actor newActor) {
         if(listOfActors.contains(newActor)) {
-            System.out.println("Актёр " + newActor.getName() + " " + newActor.getSurname() + " уже имеется!");
+            System.out.println(String.format("Актёр %s %s уже имеется!", newActor.getName(), newActor.getSurname()));
         } else {
             listOfActors.add(newActor);
-            System.out.println("Актёр " + newActor.getName() + " " + newActor.getSurname() + " добавлен!");
+            System.out.println(String.format("Актёр %s %s добавлен!", newActor.getName(), newActor.getSurname()));
         }
     }
 
@@ -33,13 +33,14 @@ public class Show {
         for(int i = 0; i < listOfActors.size(); i++) {
             if(listOfActors.get(i).getSurname().equals(surname)) {
                 Actor oldActor = listOfActors.set(i, newActor);
-                System.out.println("По техническим обстоятельствам: " + oldActor.getSurname() + " не сможет выступать, " +
-                        "поэтому его заменит " + newActor.getSurname());
+                System.out.println(String.format("По техническим обстоятельствам: %s не сможет выступать, поэтому его заменит %s",
+                        oldActor.getSurname(),
+                        newActor.getSurname()));
                 return;
             }
         }
 
-        System.out.println("Актер с фамилией " + surname + " не найден в этом спектакле!");
+        System.out.println(String.format("Актер с фамилией %s не найден в этом спектакле!", surname));
     }
 
 }
